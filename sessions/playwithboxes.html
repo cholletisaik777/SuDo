@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<style>
+#conbox{
+background-color:red;position:absolute;left:400px;top:150px;width:150px;height:320px;border-radius:25px;z-index:50;
+}
+#rbut{
+background-color:#E8E8E8;position:absolute;left:15px;top:20px;width:30px;height:30px;border-radius:5px;
+}
+#r{
+position:absolute;left:8px;top:-15px;color:red;
+}
+#bbut{
+ background-color:#E8E8E8;position:absolute;left:60px;top:20px;width:30px;height:30px;border-radius:5px;
+ }
+#b{
+position:absolute;left:8px;top:-15px;color:#00CCFF;
+}
+#g{
+position:absolute;left:8px;top:-15px;color:#66CC66;
+}
+#gbut{
+background-color:#E8E8E8;position:absolute;left:105px;top:20px;width:30px;height:30px;border-radius:5px;
+}
+#redsq{
+background-color:red;position:absolute;left:770px;top:320px;width:150px;height:150px;border-radius:25px;z-index:5;
+}
+#greensq{
+background-color:#66CC66;position:absolute;left:600px;top:320px;width:150px;height:150px;border-radius:25px;z-index:20;
+}
+#yellowsq{
+background-color:yellow;position:absolute;left:600px;top:150px;width:150px;height:150px;border-radius:25px;z-index:10;
+}
+#bluesq{
+background-color:#00CCFF;position:absolute;left:770px;top:150px;width:150px;height:150px;border-radius:25px;z-index:1;
+}
+#cycbac{
+background-color:#E8E8E8;position:absolute;left:15px;top:185px;width:120px;height:30px;border-radius:5px;
+}
+#cycfor{
+background-color:#E8E8E8;position:absolute;left:15px;top:145px;width:120px;height:30px;border-radius:5px;
+}
+#swapbac{
+background-color:#E8E8E8;position:absolute;left:15px;top:105px;width:120px;height:30px;border-radius:5px;
+}
+#swapfor{
+background-color:#E8E8E8;position:absolute;left:15px;top:65px;width:120px;height:30px;border-radius:5px;
+}
+#leftmove{
+background-color:#E8E8E8;position:absolute;left:15px;top:240px;width:50px;height:50px;border-radius:5px;
+}
+#rightmove{
+background-color:#E8E8E8;position:absolute;left:85px;top:240px;width:50px;height:50px;border-radius:5px;
+}
+#sf{
+position:absolute;left:10px;top:-15px;color:black;font-size:10px;
+}
+#sb{
+position:absolute;left:10px;top:-15px;color:black;font-size:10px;
+}
+#cf{
+position:absolute;left:10px;top:-15px;color:black;font-size:10px;
+}
+#cb{
+position:absolute;left:10px;top:-15px;color:black;font-size:10px;
+}
+#lm{
+position:absolute;left:2px;top:0px;color:black;font-size:40px;
+}
+#rm{
+position:absolute;left:3px;top:0px;color:black;font-size:40px;
+}
+</style>
+<html>
+<body>
+<div id='conbox'>
+<button onclick='fun1()' id='rbut'>
+<h3 id='r'>R</h3></button>
+<button onclick='fun2()'id='bbut'>
+<h3 id='b'>B</h3></button>
+<button onclick='fun3()'id='gbut'>
+<h3 id='g'>G</h3></button>
+<button onclick='fun4()'id='swapfor'>
+<h6 id='sf'>SWAP FORWORD</h6></button>
+<button onclick='fun5()'id='swapbac'>
+<h6 id='sb'>SWAP BACKWARD</h6></button>
+<button onclick='fun6()'id='cycfor'>
+<h6 id='cf'>CYCLE FORWORD</h6></button>
+<button onclick='fun7()'id='cycbac'>
+<h6 id='cb'>CYCLE BACKWARD</h6></button>
+<button onclick='fun8()'id='leftmove'><div id='lm'>&#8592;</div></button>
+<button onclick='fun9()'id='rightmove'><div id='rm'>&#8594;</div></button></div>
+<div id='yellowsq'></div>
+<div id='bluesq'></div>
+<div id='greensq'></div>
+<div id='redsq'></div>
+</body>
+</html>
+<script>
+var cb=document.getElementById('conbox');
+var y=document.getElementById('yellowsq');
+var g=document.getElementById('greensq');
+var b=document.getElementById('bluesq');
+var r=document.getElementById('redsq');
+function fun1(){                                                            
+cb.style.backgroundColor='red';
+}
+function fun2(){
+cb.style.backgroundColor='#00CCFF';
+}
+function fun3(){
+cb.style.backgroundColor='#66CC66';
+}
+function fun4(){
+var b1=window.getComputedStyle(y).backgroundColor;
+var r1=window.getComputedStyle(b).backgroundColor;
+var g1=window.getComputedStyle(r).backgroundColor;
+var y1=window.getComputedStyle(g).backgroundColor;
+y.style.backgroundColor=y1;
+b.style.backgroundColor=b1;
+r.style.backgroundColor=r1;
+g.style.backgroundColor=g1;
+}
+function fun5(){
+var b1=window.getComputedStyle(r).backgroundColor;
+var r1=window.getComputedStyle(g).backgroundColor;
+var g1=window.getComputedStyle(y).backgroundColor;
+var y1=window.getComputedStyle(b).backgroundColor;
+y.style.backgroundColor=y1;
+b.style.backgroundColor=b1;
+r.style.backgroundColor=r1;
+g.style.backgroundColor=g1;
+}
+function fun6(){
+if(parseInt(window.getComputedStyle(cb).left)==400){
+var TL=[600,150];
+var TR=[770,150];
+var BL=[600,320];
+var BR=[770,320];
+var sqs=[y,b,g,r];
+for(i=0;i<4;i++){
+if(parseInt(window.getComputedStyle(sqs[i]).left)==TL[0] && parseInt(window.getComputedStyle(sqs[i]).top)==TL[1])
+break;
+}
+var tl=sqs[i];
+for(i=0;i<4;i++){
+if(parseInt(window.getComputedStyle(sqs[i]).left)==TR[0] && parseInt(window.getComputedStyle(sqs[i]).top)==TR[1])
+break;
+}
+var tr=sqs[i];
+for(i=0;i<4;i++){
+if(parseInt(window.getComputedStyle(sqs[i]).left)==BL[0] && parseInt(window.getComputedStyle(sqs[i]).top)==BL[1])
+break;
+}
+var bl=sqs[i];
+for(i=0;i<4;i++){
+if(parseInt(window.getComputedStyle(sqs[i]).left)==BR[0] && parseInt(window.getComputedStyle(sqs[i]).top)==BR[1])
+break;
+}
+var br=sqs[i];
+move1(tl,tr,bl,br);
+}
+if(parseInt(window.getComputedStyle(cb).left)==685){
+var TL=[315,150];
+var TR=[485,150];
+var BL=[315,320];
+var BR=[485,320];
+var sqs=[y,b,g,r];
+for(i=0;i<4;i++){
+if(parseInt(window.getComputedStyle(sqs[i]).left)==TL[0] && parseInt(window.getComputedStyle(sqs[i]).top)==TL[1])
+break;
+}
+var tl=sqs[i];
+for(i=0;i<4;i++){
+if(parseInt(window.getComputedStyle(sqs[i]).left)==TR[0] && parseInt(window.getComputedStyle(sqs[i]).top)==TR[1])
+break;
+}
+var tr=sqs[i];
+for(i=0;i<4;i++){
+if(parseInt(window.getComputedStyle(sqs[i]).left)==BL[0] && parseInt(window.getComputedStyle(sqs[i]).top)==BL[1])
+break;
+}
+var bl=sqs[i];
+for(i=0;i<4;i++){
+if(parseInt(window.getComputedStyle(sqs[i]).left)==BR[0] && parseInt(window.getComputedStyle(sqs[i]).top)==BR[1])
+break;
+}
+var br=sqs[i];
+move1(tl,tr,bl,br);
+}
+}
+function move1(tl,tr,bl,br){
+tl.style.left=parseInt(window.getComputedStyle(tl).left)+1+'px';
+br.style.left=parseInt(window.getComputedStyle(br).left)-1+'px';
+bl.style.top=parseInt(window.getComputedStyle(bl).top)-1+'px';
+tr.style.top=parseInt(window.getComputedStyle(tr).top)+1+'px';
+if(parseInt(window.getComputedStyle(bl).top)!=150)
+setTimeout(move1,20,tl,tr,bl,br);
+}
+function fun7(){
+if(parseInt(window.getComputedStyle(cb).left)==400){
+var TL=[600,150];
+var TR=[770,150];
+var BL=[600,320];
+var BR=[770,320];
+var sqs=[y,b,g,r];
+for(i=0;i<4;i++){
+if(parseInt(window.getComputedStyle(sqs[i]).left)==TL[0] && parseInt(window.getComputedStyle(sqs[i]).top)==TL[1])
+break;
+}
+var tl=sqs[i];
+for(i=0;i<4;i++){
+if(parseInt(window.getComputedStyle(sqs[i]).left)==TR[0] && parseInt(window.getComputedStyle(sqs[i]).top)==TR[1])
+break;
+}
+var tr=sqs[i];
+for(i=0;i<4;i++){
+if(parseInt(window.getComputedStyle(sqs[i]).left)==BL[0] && parseInt(window.getComputedStyle(sqs[i]).top)==BL[1])
+break;
+}
+var bl=sqs[i];
+for(i=0;i<4;i++){
+if(parseInt(window.getComputedStyle(sqs[i]).left)==BR[0] && parseInt(window.getComputedStyle(sqs[i]).top)==BR[1])
+break;
+}
+var br=sqs[i];
+move2(tl,tr,bl,br);
+}
+if(parseInt(window.getComputedStyle(cb).left)==685){
+var TL=[315,150];
+var TR=[485,150];
+var BL=[315,320];
+var BR=[485,320];
+var sqs=[y,b,g,r];
+for(i=0;i<4;i++){
+if(parseInt(window.getComputedStyle(sqs[i]).left)==TL[0] && parseInt(window.getComputedStyle(sqs[i]).top)==TL[1])
+break;
+}
+var tl=sqs[i];
+for(i=0;i<4;i++){
+if(parseInt(window.getComputedStyle(sqs[i]).left)==TR[0] && parseInt(window.getComputedStyle(sqs[i]).top)==TR[1])
+break;
+}
+var tr=sqs[i];
+for(i=0;i<4;i++){
+if(parseInt(window.getComputedStyle(sqs[i]).left)==BL[0] && parseInt(window.getComputedStyle(sqs[i]).top)==BL[1])
+break;
+}
+var bl=sqs[i];
+for(i=0;i<4;i++){
+if(parseInt(window.getComputedStyle(sqs[i]).left)==BR[0] && parseInt(window.getComputedStyle(sqs[i]).top)==BR[1])
+break;
+}
+var br=sqs[i];
+move2(tl,tr,bl,br);
+}
+}
+function move2(tl,tr,bl,br){
+tl.style.top=parseInt(window.getComputedStyle(tl).top)+1+'px';
+br.style.top=parseInt(window.getComputedStyle(br).top)-1+'px';
+bl.style.left=parseInt(window.getComputedStyle(bl).left)+1+'px';
+tr.style.left=parseInt(window.getComputedStyle(tr).left)-1+'px';
+if(parseInt(window.getComputedStyle(tl).top)!=320)
+setTimeout(move2,20,tl,tr,bl,br);
+}
+function fun8(){
+if(parseInt(window.getComputedStyle(cb).left)!=400){
+cb.style.left=parseInt(window.getComputedStyle(cb).left)-1+'px';
+y.style.left=parseInt(window.getComputedStyle(y).left)+1+'px';
+b.style.left=parseInt(window.getComputedStyle(b).left)+1+'px';
+g.style.left=parseInt(window.getComputedStyle(g).left)+1+'px';
+r.style.left=parseInt(window.getComputedStyle(r).left)+1+'px';
+setTimeout(fun8,10);
+}
+}
+function fun9(){
+if(parseInt(window.getComputedStyle(cb).left)!=685){
+cb.style.left=parseInt(window.getComputedStyle(cb).left)+1+'px';
+y.style.left=parseInt(window.getComputedStyle(y).left)-1+'px';
+b.style.left=parseInt(window.getComputedStyle(b).left)-1+'px';
+g.style.left=parseInt(window.getComputedStyle(g).left)-1+'px';
+r.style.left=parseInt(window.getComputedStyle(r).left)-1+'px';
+setTimeout(fun9,10);
+}
+}
+</script>
+
+
+
+
+
+
